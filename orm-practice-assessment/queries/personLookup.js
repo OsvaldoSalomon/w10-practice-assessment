@@ -1,19 +1,33 @@
-const { Person, Course  } = require('../models');
+const {Person, Course} = require('../models');
 
 async function lookupPersonAndCourses(personId) {
-  // Find person and associated courses by `personId`
-};
+    // Find person and associated courses by `personId`
+    const person = await Person.findByPk(personId, {include: Course});
+    return person;
+}
 
 async function lookupPersonByLastName(lastName) {
-  // Find people by `lastName`
-};
+    const personByLastName = await Person.findAll({
+        where: {
+            lastName
+        }
+    })
+    return personByLastName;
+}
 
 async function lookupCoursesByPersonEmail(email) {
-  // Find person by `email` and return associated courses
-};
+    // Find person by `email` and return associated courses
+    const personByEmail = await Person.findAll({
+        where: {
+            email
+        },
+        include: Course
+    })
+    return personByEmail;
+}
 
 module.exports = {
-  lookupPersonAndCourses,
-  lookupPersonByLastName,
-  lookupCoursesByPersonEmail,
+    lookupPersonAndCourses,
+    lookupPersonByLastName,
+    lookupCoursesByPersonEmail,
 };
