@@ -23,7 +23,7 @@ module.exports = {
                 email: 'ligula@velitduisemper.ca',
                 createdAt: new Date(),
                 updatedAt: new Date()
-            },
+            }
         ], {});
     },
 
