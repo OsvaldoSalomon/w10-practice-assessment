@@ -7,6 +7,7 @@ async function lookupPersonAndCourses(personId) {
 }
 
 async function lookupPersonByLastName(lastName) {
+    // Find person by `lastName`
     const personByLastName = await Person.findAll({
         where: {
             lastName
@@ -17,13 +18,13 @@ async function lookupPersonByLastName(lastName) {
 
 async function lookupCoursesByPersonEmail(email) {
     // Find person by `email` and return associated courses
-    const personByEmail = await Person.findAll({
+    const personByEmail = await Person.findOne({
         where: {
             email
         },
         include: Course
     })
-    return personByEmail;
+    return personByEmail.Courses;
 }
 
 module.exports = {
